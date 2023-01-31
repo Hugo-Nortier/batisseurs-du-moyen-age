@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>bat20-bat20-f</groupId> <!-- à changer par le nom du groupe -->
+    <artifactId>serveur</artifactId> <!-- et le nom du projet -->
+    <version>1.0</version>
+     <parent>
+     <groupId>bat20-bat20-f</groupId> <!-- à changer par le nom du groupe -->
+    <artifactId>BAT20-F</artifactId> <!-- et le nom du projet -->
+    <version>1.0</version>
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- éventuellement à changer : encodage de vos fichiers -->
+        <compiler.source>11</compiler.source> <!-- éventuellement à changer : version de java (sdk) utilisée pour le développement -->
+        <compiler.target>11</compiler.target> <!-- éventuellement à changer : version de java pour l'utilisateur -->
+    </properties>
+
+
+    <build>
+        <sourceDirectory>src/</sourceDirectory>  <!-- éventuellement à changer : localisation des fichiers sources -->
+        <testSourceDirectory>tests/</testSourceDirectory> <!-- éventuellement à changer : localisation des fichiers sources des tests -->
+        <plugins>
+
+
+            <!-- pour que maven lance les tests junit 5 -->
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+
+
+            <!-- la génération de la  javadoc s'utilise avec "mvn site" -->
+
+
+            <plugin>
+
+
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <show>package</show>
+                    <nohelp>true</nohelp>
+                    <encoding>utf-8</encoding> <!-- éventuellement à changer : encodage de vos fichiers -->
+                    <charset>utf-8</charset> <!-- éventuellement à changer : encodage de vos fichiers -->
+                    <docencoding>utf-8</docencoding>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>javadoc</id>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                        <phase>site</phase>
+                        <configuration>
+                            <!-- <overview>${basedir}/src/main/java/jeu421/overview.html</overview> --><!-- à changer : selon que vous avez des descriptions du projet et des packages -->
+                            <!-- endroit où seront les fichiers html générés ! attention au .gitignore ! -->
+                            <!-- ici, c'est dans src/main/apidocs -->
+                            <outputDirectory>${basedir}/src/main/</outputDirectory>
+                            <reportOutputDirectory>${basedir}/src/main/</reportOutputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-javadoc</id>
+                        <goals>
+                            <goal>test-javadoc</goal>
+                        </goals>
+                        <phase>site</phase>
+                        <configuration>
+                            <!-- endroit où seront les fichiers html générés ! attention au .gitignore ! -->
+                            <!-- ici, c'est dans src/test/apidocs -->
+                           <reportOutputDirectory>${basedir}/src/test/</reportOutputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source> <!-- éventuellement à changer : version de java -->
+                    <target>11</target> <!-- éventuellement à changer : version de java -->
+                </configuration>
+            </plugin>
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.0.0</version>
+    <executions>
+        <execution>
+        <id>moyenage</id>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                    <mainClass>reseau.Serveur</mainClass>
+                <arguments>
+                    <argument>moyenage</argument>
+                </arguments>
+            </configuration>
+        </execution>
+        <execution>
+        <id>moyenage1004</id>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                    <mainClass>reseau.Serveur</mainClass>
+                <arguments>
+                    <argument>moyenage</argument>
+                    <argument>100</argument>
+                    <argument>4</argument>
+                </arguments>
+            </configuration>
+        </execution>
+        <execution>
+        <id>moyenage1002</id>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                    <mainClass>reseau.Serveur</mainClass>
+                <arguments>
+                    <argument>moyenage</argument>
+                    <argument>100</argument>
+                    <argument>2</argument>
+                </arguments>
+            </configuration>
+        </execution>
+        <execution>
+            <id>antiquite</id>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                    <mainClass>reseau.Serveur</mainClass>
+                <arguments>
+                    <argument>antiquite</argument>
+                </arguments>
+            </configuration>
+        </execution>
+         <execution>
+            <id>antiquite1004</id>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                    <mainClass>reseau.Serveur</mainClass>
+                <arguments>
+                    <argument>antiquite</argument>
+                    <argument>100</argument>
+                    <argument>4</argument>
+                </arguments>
+            </configuration>
+        </execution>
+        <execution>
+            <id>antiquite1002</id>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                    <mainClass>reseau.Serveur</mainClass>
+                <arguments>
+                    <argument>antiquite</argument>
+                    <argument>100</argument>
+                    <argument>2</argument>
+                </arguments>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+        </plugins>
+    </build>
+
+
+    <dependencies>
+
+
+
+        <!-- intégration de JUnit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.6.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>bat20-bat20-f</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.5.10</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
